@@ -12,7 +12,7 @@
   // Default 30 memories if nothing is saved yet
   const DEFAULT_MEMORIES = [
     { "src": "assets/images/memories/16d2385834be6b9070cedf0324b7cf71.jpg", "date": "أول عيد ميلاد نقضيه سوا", "caption": "يا رب دايما نفضل سوا ودايما أعرف أبسطك كده", "isVideo": false },
-    { "src": "assets/images/memories/IMG-20241223-WA0029.jpg", "date": "23 ديسمبر 2024", "caption": "عيوضي القمر، شياكة وأناقة توب التوب 💯", "isVideo": false },
+    { "src": "assets/images/memories/IMG-20241223-WA0029.jpg", "date": "23 ديسمبر 2024", "caption": "عايودي القمر، شياكة وأناقة توب التوب الصورة خطييرة 💯", "isVideo": false },
     { "src": "assets/images/memories/IMG-20250501-WA0034.jpg", "date": "1 مايو 2025", "caption": "خروجة الكوربا بجد كانت تحفة", "isVideo": false },
     { "src": "assets/images/memories/IMG-20250506-WA0175.jpg", "date": "6 مايو 2025", "caption": "مشينا بعد الجامعة، اللي بجد بيبقى شايل ميموريز كتيرة قوي، حاجات حلوة وحاجات صعبة وضحك وحاجات كتيرة جداً", "isVideo": false },
     { "src": "assets/images/memories/IMG-20250513-WA0010.jpg", "date": "أنا وأنت وضرتي", "caption": "أمير صاحبك أجدع واحد بجد وربنا يخليكم لبعض وتفضلوا طول العمر سوا، أحسن صاحب ممكن تشوفه", "isVideo": false },
