@@ -4,6 +4,65 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // -1. Password Gate Overlay
+  const passwordGateOverlay = document.getElementById("passwordGateOverlay");
+  const passwordGateBox = passwordGateOverlay ? passwordGateOverlay.querySelector(".password-gate-box") : null;
+  const sitePasswordInput = document.getElementById("sitePasswordInput");
+  const passwordToggleBtn = document.getElementById("passwordToggleBtn");
+  const passwordUnlockBtn = document.getElementById("passwordUnlockBtn");
+  const passwordGateError = document.getElementById("passwordGateError");
+  const SITE_PASS = "9111212";
+
+  if (passwordGateOverlay) {
+    if (sessionStorage.getItem("hbd_unlocked") === "1") {
+      passwordGateOverlay.style.display = "none";
+    } else if (sitePasswordInput) {
+      setTimeout(() => sitePasswordInput.focus(), 150);
+    }
+
+    if (passwordToggleBtn && sitePasswordInput) {
+      passwordToggleBtn.addEventListener("click", () => {
+        const isPass = sitePasswordInput.type === "password";
+        sitePasswordInput.type = isPass ? "text" : "password";
+        passwordToggleBtn.textContent = isPass ? "🙈" : "👁️";
+      });
+    }
+
+    function tryUnlockSite() {
+      if (!sitePasswordInput) return;
+      const val = sitePasswordInput.value.trim();
+      if (val === SITE_PASS) {
+        sessionStorage.setItem("hbd_unlocked", "1");
+        if (passwordGateError) passwordGateError.textContent = "";
+        passwordGateOverlay.classList.add("hidden");
+        setTimeout(() => {
+          passwordGateOverlay.style.display = "none";
+        }, 650);
+      } else {
+        if (passwordGateError) {
+          passwordGateError.textContent = "كلمة السر غلط يا صاحبي 😅 جرب تاني!";
+        }
+        if (passwordGateBox) {
+          passwordGateBox.classList.remove("shake");
+          void passwordGateBox.offsetWidth;
+          passwordGateBox.classList.add("shake");
+        }
+      }
+    }
+
+    if (passwordUnlockBtn) {
+      passwordUnlockBtn.addEventListener("click", tryUnlockSite);
+    }
+    if (sitePasswordInput) {
+      sitePasswordInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          tryUnlockSite();
+        }
+      });
+    }
+  }
+
   // 0. Welcome Overlay (Autoplay Gate)
   const welcomeOverlay = document.getElementById("welcomeOverlay");
   const welcomeStartBtn = document.getElementById("welcomeStartBtn");

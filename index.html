@@ -15,6 +15,23 @@
 </head>
 <body>
 
+  <!-- Password Lock Overlay -->
+  <div class="welcome-overlay password-gate-overlay" id="passwordGateOverlay">
+    <div class="welcome-box password-gate-box">
+      <div class="welcome-emoji">🔒🎁</div>
+      <h2 class="welcome-title">الهدية دي لـ عايودي بس!</h2>
+      <p class="welcome-sub">اكتب كلمة السر عشان تفتح الحفلة ✨</p>
+      <div class="password-input-wrap">
+        <input type="password" id="sitePasswordInput" class="password-gate-input" inputmode="numeric" placeholder="اكتب الباسورد هنا..." autocomplete="off">
+        <button type="button" class="password-toggle-btn" id="passwordToggleBtn" aria-label="إظهار أو إخفاء كلمة السر">👁️</button>
+      </div>
+      <p class="password-gate-error" id="passwordGateError"></p>
+      <button type="button" class="welcome-start-btn" id="passwordUnlockBtn">
+        <span>افتح الهدية 🔓</span>
+      </button>
+    </div>
+  </div>
+
   <!-- Welcome / Music Autoplay Overlay -->
   <div class="welcome-overlay" id="welcomeOverlay">
     <div class="welcome-box">
