@@ -19,7 +19,7 @@
     { "src": "assets/images/memories/IMG-20250922-WA0279.jpg", "date": "22 سبتمبر 2025", "caption": "خروجات إيتوال اللي ملناش غيرها", "isVideo": false },
     { "src": "assets/images/memories/IMG-20251020-WA0095.jpg", "date": "20 أكتوبر 2025", "caption": "الصور العشوائية بتاعتنا", "isVideo": false },
     { "src": "assets/images/memories/IMG-20251114-WA0083.jpg", "date": "14 نوفمبر 2025", "caption": "الحضن وأحن واحد في الدنيا", "isVideo": false },
-    { "src": "assets/images/memories/IMG-20251114-WA0090.jpg", "date": "14 نوفمبر 2025", "caption": "حفلات الجامعة والحاجات اللي أنت بتجيبها لي دايما رغم أنها تافهة، البريسلت لسه عندي", "isVideo": false },
+    { "src": "assets/images/memories/IMG-20251114-WA0090.jpg", "date": "14 نوفمبر 2025", "caption": "حفلات الجامعة والحاجات اللي أنت بتجيبها علشان خاطري غالي عندك رغم أنها تافهة، البريسلت لسه عندي", "isVideo": false },
     { "src": "assets/images/memories/IMG-20251206-WA0068.jpg", "date": "6 ديسمبر 2025", "caption": "لما بنزلك غصب عنك بس ما تنكرش عادتي حلوة", "isVideo": false },
     { "src": "assets/images/memories/IMG-20251230-WA0062.jpg", "date": "30 ديسمبر 2025", "caption": "ماتش ماتش كده دايما", "isVideo": false },
     { "src": "assets/images/memories/IMG-20260702-WA0018.jpg", "date": "2 يوليو 2026", "caption": "نزولاتنا العشوائية", "isVideo": false },
