@@ -31,7 +31,7 @@
     { "src": "assets/images/memories/Snapchat-1014406887.jpg", "date": "تاني عيد ميلاد لينا سوا", "caption": "يا رب دايما يا عايودي أقدر أفرحك كده وعقبال كل عيد ميلاد وإحنا سوا", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-1025946463.jpg", "date": "خروجة رمضان التانية", "caption": "البالونة لسه عندي وبجد بحب التفاصيل الصغيرة دي", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-1191593625.jpg", "date": "الشطار", "caption": "يا رب دايما كده نفضل شطار ودايما بنشد بعض للنجاح وبس", "isVideo": false },
-    { "src": "assets/images/memories/Snapchat-1342797847.mp4", "date": "أول حفلة في الجامعة", "caption": "أه كان يوم تحفة", "isVideo": true },
+    { "src": "assets/images/memories/Snapchat-1342797847.mp4", "date": "أول حفلة في الجامعة", "caption": "فاكر كان يوم تحفة", "isVideo": true },
     { "src": "assets/images/memories/Snapchat-1376549745.jpg", "date": "السند", "caption": "أنا عارفة إن أنت بتحب الصورة دي جداً ويا رب نفضل سند لبعض على طول وأنا كده كده موجودة", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-1512167119.jpg", "date": "أيام الامتحانات", "caption": "رغم إنها بتبقى أيام زي الزفت بس معاك بتهون كل حاجة", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-1737184744.jpg", "date": "أسرع نزول نزلناها", "caption": "بحب اليوم ده قوي، واتوال بس الفرع الثاني", "isVideo": false },
