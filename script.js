@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }).catch((err) => {
           console.log("Voice audio file not uploaded yet:", err);
           if (voiceCurrentTime) {
-            voiceCurrentTime.textContent = "حطي voice.mp3 في assets/music";
+            voiceCurrentTime.textContent = "⚠️ تعذر تشغيل الصوت";
           }
         });
       }
