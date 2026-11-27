@@ -28,7 +28,7 @@
     { "src": "assets/images/memories/Picsart_24-01-09_16-21-04-592.jpg", "date": "أول صورة لينا سوا في التاريخ", "caption": "وبعد سنوات طوال من الإلحاح الرهيب أخيراً اتنازلت واتصورت معاك", "isVideo": false },
     { "src": "assets/images/memories/Screenshot_2024-11-04-16-27-02-534_com.snapchat.android.jpg", "date": "تحت المطر", "caption": "أنا فاكرة يومها أنت جتلي مخصوص ورجعتلي بعد ما كنت خلاص هتمشي، أهو ما تنكرش إني عيشتك ميموري حلوة", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-10078879.jpg", "date": "خروجة رمضان المعتادة", "caption": "بحب الصورة دي جداً", "isVideo": false },
-    { "src": "assets/images/memories/Snapchat-1014406887.jpg", "date": "تاني عيد ميلاد لينا سوا", "caption": "يا رب دايما يا عيوطي أقدر أفرحك كده وعقبال كل عيد ميلاد وإحنا سوا", "isVideo": false },
+    { "src": "assets/images/memories/Snapchat-1014406887.jpg", "date": "تاني عيد ميلاد لينا سوا", "caption": "يا رب دايما يا عايودي أقدر أفرحك كده وعقبال كل عيد ميلاد وإحنا سوا", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-1025946463.jpg", "date": "خروجة رمضان التانية", "caption": "البالونة لسه عندي وبجد بحب التفاصيل الصغيرة دي", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-1191593625.jpg", "date": "الشطار", "caption": "يا رب دايما كده نفضل شطار ودايما بنشد بعض للنجاح وبس", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-1342797847.mp4", "date": "أول حفلة في الجامعة", "caption": "أه كان يوم تحفة", "isVideo": true },
