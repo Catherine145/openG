@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday يا عايودي! 🎉</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Welcome / Music Autoplay Overlay -->
+  <div class="welcome-overlay" id="welcomeOverlay">
+    <div class="welcome-box">
+      <div class="welcome-emoji">🎉🎂🎉</div>
+      <h2 class="welcome-title">Happy Birthday يا عايودي!</h2>
+      <p class="welcome-sub">دوس هنا عشان تبدأ الحفلة 🎵</p>
+      <button class="welcome-start-btn" id="welcomeStartBtn">
+        <span>ابدأ الحفلة 🎊</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Festive Party Lights Garland -->
+  <div class="party-lights-garland">
+    <span class="light-bulb light-gold"></span>
+    <span class="light-bulb light-red"></span>
+    <span class="light-bulb light-cyan"></span>
+    <span class="light-bulb light-pink"></span>
+    <span class="light-bulb light-green"></span>
+    <span class="light-bulb light-gold"></span>
+    <span class="light-bulb light-purple"></span>
+    <span class="light-bulb light-cyan"></span>
+    <span class="light-bulb light-red"></span>
+    <span class="light-bulb light-gold"></span>
+    <span class="light-bulb light-pink"></span>
+    <span class="light-bulb light-green"></span>
+  </div>
+
+  <!-- Music Player Widget -->
+  <div class="music-player-widget" id="musicPlayerWidget">
+    <button class="music-toggle-btn" id="musicToggleBtn" aria-label="تشغيل أو إيقاف الموسيقى" title="شغّل أو أوقف الأغنية 🎵">
+      <div class="vinyl-disc" id="vinylDisc">
+        <div class="vinyl-center" id="vinylCenterIcon">🎵</div>
+      </div>
+      <div class="music-info">
+        <span class="music-label">أغنية العسيلي</span>
+        <span class="music-status" id="musicStatus">اضغط للتشغيل ▷</span>
+      </div>
+      <div class="equalizer-bars" id="equalizerBars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="music-mute-icon" id="musicMuteIcon" title="كتم / تشغيل">🔊</div>
+    </button>
+    <audio id="bgAudio" preload="auto" loop src="assets/music/music.mp3"></audio>
+  </div>
+
+  <!-- Ambient Glows -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-mid"></div>
+  <div class="ambient-glow glow-bottom"></div>
+
+  <!-- Magical Background Theme Layer (Lanterns, Glowing Flower, Butterfly, Swan, Ocean & Monsters Vibe) -->
+  <div class="magical-sky-layer" aria-hidden="true">
+    <div class="bg-moon">🌕</div>
+    <div class="sky-lantern lantern-1">🏮</div>
+    <div class="sky-lantern lantern-2">🏮</div>
+    <div class="sky-lantern lantern-3">🏮</div>
+    <div class="sky-lantern lantern-4">🏮</div>
+    <div class="sky-lantern lantern-5">🏮</div>
+    <div class="sky-butterfly butterfly-1">🦋</div>
+    <div class="sky-butterfly butterfly-2">🦋</div>
+    <div class="bg-glowing-flower">
+      <svg viewBox="0 0 100 100" class="glowing-flower-svg">
+        <defs>
+          <radialGradient id="bgFlowerAura" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fef08a" stop-opacity="0.9"/>
+            <stop offset="55%" stop-color="#f59e0b" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="46" fill="url(#bgFlowerAura)"/>
+        <path d="M50 85 L50 54" stroke="#4ade80" stroke-width="4" stroke-linecap="round"/>
+        <path d="M50 52 Q30 28 50 14 Q70 28 50 52 Z" fill="#fef08a"/>
+        <path d="M50 52 Q20 44 26 22 Q46 30 50 52 Z" fill="#fde047"/>
+        <path d="M50 52 Q80 44 74 22 Q54 30 50 52 Z" fill="#fde047"/>
+        <circle cx="50" cy="40" r="6" fill="#ffffff"/>
+      </svg>
+    </div>
+    <div class="bg-theme-accent accent-swan">🦢</div>
+    <div class="bg-theme-accent accent-hibiscus">🌺</div>
+    <div class="bg-theme-accent accent-wave">🌊</div>
+    <div class="bg-theme-accent accent-monster">👾</div>
+    <div class="bg-theme-accent accent-ball">⚽</div>
+    <div class="bg-theme-accent accent-engineer">👨‍💻</div>
+    <div class="bg-theme-accent accent-hundred">💯</div>
+    <div class="bg-theme-accent accent-fingers">🤞</div>
+  </div>
+
+  <!-- Page Wrapper -->
+  <main class="page-wrapper">
+
+    <!-- 1. Hero Section -->
+    <header class="hero-section">
+      <div class="badge-pill">
+        <span class="badge-dot"></span>
+        <span>12/12/2003 • أهم يوم في السنة ✨</span>
+      </div>
+
+      <h1 class="celebration-title">
+        Happy Birthday!
+      </h1>
+      
+      <h2 class="friend-name-display">
+        يا عايودي ❤️
+      </h2>
+
+      <p class="hero-tagline">كل سنة وإحنا سوا دايماً في ضهر بعض 🎂</p>
+
+      <!-- Interactive Vanilla Birthday Cake -->
+      <div class="cake-container">
+        <div class="cake vanilla-cake" id="birthdayCake">
+          <div class="cake-plate"></div>
+          
+          <div class="layer layer-bottom vanilla-layer">
+            <div class="cream-fill"></div>
+          </div>
+          <div class="layer layer-middle vanilla-layer">
+            <div class="cream-fill"></div>
+          </div>
+          <div class="layer layer-top vanilla-layer">
+            <div class="vanilla-icing">
+              <div class="icing-drips"></div>
+            </div>
+          </div>
+          
+          <!-- Number Candles (2 on left, 3 on right -> 23) -->
+          <div class="candles-wrapper number-candles-wrapper">
+            <div class="number-candle" id="candleDigit2">
+              <span class="digit-text">2</span>
+              <div class="flame" id="flame1"></div>
+              <div class="smoke" id="smoke1"></div>
+            </div>
+
+            <div class="number-candle" id="candleDigit3">
+              <span class="digit-text">3</span>
+              <div class="flame" id="flame2"></div>
+              <div class="smoke" id="smoke2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wish-action-area">
+          <button class="blow-candle-btn" id="blowCandleBtn">
+            <span class="btn-icon">✨</span>
+            <span class="btn-text">اطفي الشمع واتمنى أمنية</span>
+          </button>
+          <p class="wish-tip" id="wishFeedback">دوس على الزرار عشان تطفي الشمع وتفرقع الزينة!</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. The Letter -->
+    <section class="letter-section">
+      <div class="letter-card">
+        <div class="letter-header">
+          <div class="letter-icon">💌</div>
+          <div class="letter-title-wrap">
+            <h3 class="letter-heading">إلى أجدع صاحب وأخ</h3>
+          </div>
+        </div>
+
+        <div class="letter-body">
+          <p class="letter-text" id="mainLetterText">كل سنة وأنت طيب يا صاحبيييي! ❤️✨
+
+النهاردة مش مجرد يوم عادي، ده يوم 12/12 اللي اتولد فيه احلى واغلى شخص عرفته. حبيت أعملك الويبسايت ده كذكرى تفضل معانا على طول، لأن الكروت العادية مبتكفيش الكلام والمشاعر اللي في قلبي ليك.
+
+أنا ممتنة جداً لوجودك في حياتي يا عايودي.. ممتنة لكل ضحكة ضحكناها من قلبنا، لكل مشوار وخروجة وقاعده عشوائيه وميمورز جميلة وصور وعمر كامل لينا سوا، ولكل موقف كنت جنبي فيه من غير ما أطلب حتى. الصحاب نعمة، وأنت اجمل واغلى واحلى هديه ربنا بعتهالي.
+
+عايزه اقولك اني دايما فخورة ومبسوطه بيك فوق ما تتخيل كل نجاح او فرح ليك بالنسبالي بيبقى فرحته الضعف
+
+إن شاء الله السنين اللي جايه كلها تكون مبسوط وناجح اكتر واكتر، وتحقق كل أحلامك وكل اللي نفسك فيه.. وكل سنة وإحنا سوا دايماً في كل خطوة! 🎈🥳</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 2.5 Enchanted Garden Photo -->
+    <section class="magic-world-section">
+      <!-- Magical Garden Image Showcase -->
+      <div class="magic-scene-card magic-lightbox-card" tabindex="0" role="button" aria-label="الحديقة السحرية" data-src="assets/images/magical_garden.jpg" data-date="أجمل عالم سحري ✨" data-caption="الهدايا اللي انت جبتهالي وكل حاجه غاليه عليا اوي وبحبها اوي وزوقك الحلوو اوي زيك كده 🏮🦋🦢🌸">
+        <div class="magic-scene-media">
+          <img src="assets/images/magical_garden.jpg" alt="الحديقة السحرية والوردة المضيئة" class="magic-scene-img" loading="lazy">
+          <div class="magic-badge-float">🏮✨🦋🦢</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 3. Photo Album (30 Photo Cards Directly Embedded) -->
+    <section class="album-section" id="albumSection">
+      <div class="section-title-wrap">
+        <h3 class="section-title">ذكريات ومواقف متتنسيش 📸</h3>
+      </div>
+
+      <div class="album-grid" id="albumGrid">
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 01" data-src="assets/images/memories/16d2385834be6b9070cedf0324b7cf71.jpg" data-date="ذكرى جميلة" data-caption="لحظة ما نقدر ننساها أبداً 💛">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/16d2385834be6b9070cedf0324b7cf71.jpg" alt="ذكرى 01" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">ذكرى جميلة</span>
+              <span class="card-num">01</span>
+            </div>
+            <p class="card-caption">لحظة ما نقدر ننساها أبداً 💛</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 02" data-src="assets/images/memories/IMG-20241223-WA0029.jpg" data-date="23 ديسمبر 2024" data-caption="الضحكة دي مش هتتعوض 😂❤️">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20241223-WA0029.jpg" alt="ذكرى 02" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">23 ديسمبر 2024</span>
+              <span class="card-num">02</span>
+            </div>
+            <p class="card-caption">الضحكة دي مش هتتعوض 😂❤️</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 03" data-src="assets/images/memories/IMG-20250501-WA0034.jpg" data-date="1 مايو 2025" data-caption="يوم من أحلى الأيام 🌟">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20250501-WA0034.jpg" alt="ذكرى 03" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">1 مايو 2025</span>
+              <span class="card-num">03</span>
+            </div>
+            <p class="card-caption">يوم من أحلى الأيام 🌟</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 04" data-src="assets/images/memories/IMG-20250506-WA0175.jpg" data-date="6 مايو 2025" data-caption="سوا دايماً وفي كل حاجة 🫂">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20250506-WA0175.jpg" alt="ذكرى 04" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">6 مايو 2025</span>
+              <span class="card-num">04</span>
+            </div>
+            <p class="card-caption">سوا دايماً وفي كل حاجة 🫂</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 05" data-src="assets/images/memories/IMG-20250513-WA0010.jpg" data-date="13 مايو 2025" data-caption="أجمل ذكريات عمرنا ✨">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20250513-WA0010.jpg" alt="ذكرى 05" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">13 مايو 2025</span>
+              <span class="card-num">05</span>
+            </div>
+            <p class="card-caption">أجمل ذكريات عمرنا ✨</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 06" data-src="assets/images/memories/IMG-20250922-WA0279.jpg" data-date="22 سبتمبر 2025" data-caption="لما نبص للصورة دي بنفتكر كل حاجة حلوة 🐥">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20250922-WA0279.jpg" alt="ذكرى 06" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">22 سبتمبر 2025</span>
+              <span class="card-num">06</span>
+            </div>
+            <p class="card-caption">لما نبص للصورة دي بنفتكر كل حاجة حلوة 🐥</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 07" data-src="assets/images/memories/IMG-20251020-WA0095.jpg" data-date="20 أكتوبر 2025" data-caption="ربنا يديم الصحبة الحلوة دي ❤️">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20251020-WA0095.jpg" alt="ذكرى 07" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">20 أكتوبر 2025</span>
+              <span class="card-num">07</span>
+            </div>
+            <p class="card-caption">ربنا يديم الصحبة الحلوة دي ❤️</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 08" data-src="assets/images/memories/IMG-20251114-WA0083.jpg" data-date="14 نوفمبر 2025" data-caption="يوم ما نقدر ننساه 💖">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20251114-WA0083.jpg" alt="ذكرى 08" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">14 نوفمبر 2025</span>
+              <span class="card-num">08</span>
+            </div>
+            <p class="card-caption">يوم ما نقدر ننساه 💖</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 09" data-src="assets/images/memories/IMG-20251114-WA0090.jpg" data-date="14 نوفمبر 2025" data-caption="لحظة من أحلى اللحظات 🎉">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20251114-WA0090.jpg" alt="ذكرى 09" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">14 نوفمبر 2025</span>
+              <span class="card-num">09</span>
+            </div>
+            <p class="card-caption">لحظة من أحلى اللحظات 🎉</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 10" data-src="assets/images/memories/IMG-20251206-WA0068.jpg" data-date="6 ديسمبر 2025" data-caption="شيء بيفرحنا كل ما نشوفه 😘">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20251206-WA0068.jpg" alt="ذكرى 10" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">6 ديسمبر 2025</span>
+              <span class="card-num">10</span>
+            </div>
+            <p class="card-caption">شيء بيفرحنا كل ما نشوفه 😘</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 11" data-src="assets/images/memories/IMG-20251230-WA0062.jpg" data-date="30 ديسمبر 2025" data-caption="ذكرى غالية على قلبي 🌸">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20251230-WA0062.jpg" alt="ذكرى 11" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">30 ديسمبر 2025</span>
+              <span class="card-num">11</span>
+            </div>
+            <p class="card-caption">ذكرى غالية على قلبي 🌸</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 12" data-src="assets/images/memories/IMG-20260702-WA0018.jpg" data-date="2 يوليو 2026" data-caption="سعادة حقيقية 💃">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20260702-WA0018.jpg" alt="ذكرى 12" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">2 يوليو 2026</span>
+              <span class="card-num">12</span>
+            </div>
+            <p class="card-caption">سعادة حقيقية 💃</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 13" data-src="assets/images/memories/IMG-20260722-WA0001.jpg" data-date="22 يوليو 2026" data-caption="لما تكون الضحكة من القلب 😄">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20260722-WA0001.jpg" alt="ذكرى 13" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">22 يوليو 2026</span>
+              <span class="card-num">13</span>
+            </div>
+            <p class="card-caption">لما تكون الضحكة من القلب 😄</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 14" data-src="assets/images/memories/IMG-20260921-WA0046.jpg" data-date="21 سبتمبر 2026" data-caption="يوم زي الفل 🌺">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/IMG-20260921-WA0046.jpg" alt="ذكرى 14" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">21 سبتمبر 2026</span>
+              <span class="card-num">14</span>
+            </div>
+            <p class="card-caption">يوم زي الفل 🌺</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 15" data-src="assets/images/memories/Picsart_24-01-09_16-21-04-592.jpg" data-date="ذكرى جميلة" data-caption="أحلى خروجة 🚗">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Picsart_24-01-09_16-21-04-592.jpg" alt="ذكرى 15" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">ذكرى جميلة</span>
+              <span class="card-num">15</span>
+            </div>
+            <p class="card-caption">أحلى خروجة 🚗</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 16" data-src="assets/images/memories/Screenshot_2024-11-04-16-27-02-534_com.snapchat.android.jpg" data-date="ذكرى جميلة" data-caption="وقت ما نقدر نرجعه بس في قلبنا دايماً 💝">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Screenshot_2024-11-04-16-27-02-534_com.snapchat.android.jpg" alt="ذكرى 16" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">ذكرى جميلة</span>
+              <span class="card-num">16</span>
+            </div>
+            <p class="card-caption">وقت ما نقدر نرجعه بس في قلبنا دايماً 💝</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 17" data-src="assets/images/memories/Snapchat-10078879.jpg" data-date="79  1007" data-caption="صورة بتحكي أحلى قصة 📸">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-10078879.jpg" alt="ذكرى 17" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">79  1007</span>
+              <span class="card-num">17</span>
+            </div>
+            <p class="card-caption">صورة بتحكي أحلى قصة 📸</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 18" data-src="assets/images/memories/Snapchat-1014406887.jpg" data-date="68  1014" data-caption="برديه الحلوة دي 🌙">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-1014406887.jpg" alt="ذكرى 18" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">68  1014</span>
+              <span class="card-num">18</span>
+            </div>
+            <p class="card-caption">برديه الحلوة دي 🌙</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 19" data-src="assets/images/memories/Snapchat-1025946463.jpg" data-date="64  1025" data-caption="لحظة ما بتتكررش 💫">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-1025946463.jpg" alt="ذكرى 19" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">64  1025</span>
+              <span class="card-num">19</span>
+            </div>
+            <p class="card-caption">لحظة ما بتتكررش 💫</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 20" data-src="assets/images/memories/Snapchat-1191593625.jpg" data-date="36  1191" data-caption="كل تفصيلة فيها ذكرى 🎈">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-1191593625.jpg" alt="ذكرى 20" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">36  1191</span>
+              <span class="card-num">20</span>
+            </div>
+            <p class="card-caption">كل تفصيلة فيها ذكرى 🎈</p>
+          </div>
+        </div>
+        <div class="album-card video-card" tabindex="0" role="button" aria-label="ذكرى 21">
+          <div class="card-image-wrap video-wrap">
+            <video class="card-image card-video" src="assets/images/memories/Snapchat-1342797847.mp4" muted playsinline preload="metadata" poster=""></video>
+            <div class="video-play-overlay">▶</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">78  1342</span>
+              <span class="card-num">21</span>
+            </div>
+            <p class="card-caption">ربنا يكرمك دايماً يا عايودي ❤️</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 22" data-src="assets/images/memories/Snapchat-1376549745.jpg" data-date="97  1376" data-caption="سعيدة إننا عيشنا اللحظة دي سوا 🫂">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-1376549745.jpg" alt="ذكرى 22" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">97  1376</span>
+              <span class="card-num">22</span>
+            </div>
+            <p class="card-caption">سعيدة إننا عيشنا اللحظة دي سوا 🫂</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 23" data-src="assets/images/memories/Snapchat-1512167119.jpg" data-date="71  1512" data-caption="من أجمل أيامنا 🌟">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-1512167119.jpg" alt="ذكرى 23" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">71  1512</span>
+              <span class="card-num">23</span>
+            </div>
+            <p class="card-caption">من أجمل أيامنا 🌟</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 24" data-src="assets/images/memories/Snapchat-1737184744.jpg" data-date="47  1737" data-caption="لما نبص على الأيام دي بنفتكر إيه قد إيه إحنا محظوظين 💛">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-1737184744.jpg" alt="ذكرى 24" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">47  1737</span>
+              <span class="card-num">24</span>
+            </div>
+            <p class="card-caption">لما نبص على الأيام دي بنفتكر إيه قد إيه إحنا محظوظين 💛</p>
+          </div>
+        </div>
+        <div class="album-card video-card" tabindex="0" role="button" aria-label="ذكرى 25">
+          <div class="card-image-wrap video-wrap">
+            <video class="card-image card-video" src="assets/images/memories/Snapchat-1907026020.mp4" muted playsinline preload="metadata" poster=""></video>
+            <div class="video-play-overlay">▶</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">60 فبراير 1907</span>
+              <span class="card-num">25</span>
+            </div>
+            <p class="card-caption">ضحكة عايودي الحلوة 😄✨</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 26" data-src="assets/images/memories/Snapchat-2023851695.jpg" data-date="16  2023" data-caption="لحظة بتسوى الدنيا كلها 🌍❤️">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-2023851695.jpg" alt="ذكرى 26" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">16  2023</span>
+              <span class="card-num">26</span>
+            </div>
+            <p class="card-caption">لحظة بتسوى الدنيا كلها 🌍❤️</p>
+          </div>
+        </div>
+        <div class="album-card video-card" tabindex="0" role="button" aria-label="ذكرى 27">
+          <div class="card-image-wrap video-wrap">
+            <video class="card-image card-video" src="assets/images/memories/Snapchat-2035264167.mp4" muted playsinline preload="metadata" poster=""></video>
+            <div class="video-play-overlay">▶</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">41  2035</span>
+              <span class="card-num">27</span>
+            </div>
+            <p class="card-caption">ذكريات مش هتتنسى أبداً 🐥</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 28" data-src="assets/images/memories/Snapchat-262237617.jpg" data-date="61  2622" data-caption="يوم أحلى من يوم 🌸">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-262237617.jpg" alt="ذكرى 28" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">61  2622</span>
+              <span class="card-num">28</span>
+            </div>
+            <p class="card-caption">يوم أحلى من يوم 🌸</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 29" data-src="assets/images/memories/Snapchat-74414018.jpg" data-date="18  7441" data-caption="الصحبة الحلوة دي ربنا يديمها 🫂💖">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-74414018.jpg" alt="ذكرى 29" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">18  7441</span>
+              <span class="card-num">29</span>
+            </div>
+            <p class="card-caption">الصحبة الحلوة دي ربنا يديمها 🫂💖</p>
+          </div>
+        </div>
+        <div class="album-card" tabindex="0" role="button" aria-label="ذكرى 30" data-src="assets/images/memories/Snapchat-912697055.jpg" data-date="5  9126" data-caption="حاجة بتفرحنا دايماً لما نشوفها 🎊">
+          <div class="card-image-wrap">
+            <img src="assets/images/memories/Snapchat-912697055.jpg" alt="ذكرى 30" class="card-image" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">5  9126</span>
+              <span class="card-num">30</span>
+            </div>
+            <p class="card-caption">حاجة بتفرحنا دايماً لما نشوفها 🎊</p>
+          </div>
+        </div>
+
+        <!-- 3 Editable Extra Slots for Ayouda -->
+        <div class="album-card user-editable-card" tabindex="0" role="button" aria-label="مساحتك الخاصة 1" data-slot="0" data-date="مساحتك الخاصة 💛" data-caption="صورتك المفضلة هنا يا عايودي ✨">
+          <div class="card-image-wrap user-slot-wrap">
+            <img src="" alt="مساحتك الخاصة 1" class="card-image user-slot-img" style="display: none;">
+            <div class="user-slot-placeholder">
+              <span class="user-slot-icon">📸</span>
+              <p class="user-slot-hint">مساحتك الخاصة يا عايودي!<br>حط صورتك اللي بتحبها هنا ✨</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">مساحتك الخاصة 💛</span>
+              <span class="card-num">31</span>
+            </div>
+            <input type="text" class="user-slot-caption-input" placeholder="اكتب كلمة حلوة للصورة دي..." value="صورتك المفضلة هنا يا عايودي ✨" aria-label="وصف الصورة 1">
+            <div class="user-slot-actions">
+              <label class="user-slot-upload-btn">
+                <span>📷 اختار صورة</span>
+                <input type="file" accept="image/*" class="user-slot-file-input" hidden>
+              </label>
+              <span class="user-slot-status"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="album-card user-editable-card" tabindex="0" role="button" aria-label="مساحتك الخاصة 2" data-slot="1" data-date="مساحتك الخاصة 💛" data-caption="ذكرى من اختيارك يا صاحبي 🫂">
+          <div class="card-image-wrap user-slot-wrap">
+            <img src="" alt="مساحتك الخاصة 2" class="card-image user-slot-img" style="display: none;">
+            <div class="user-slot-placeholder">
+              <span class="user-slot-icon">🌟</span>
+              <p class="user-slot-hint">مكان فاضي ليك!<br>اختار صورة تحب تفضل هنا 💛</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">مساحتك الخاصة 💛</span>
+              <span class="card-num">32</span>
+            </div>
+            <input type="text" class="user-slot-caption-input" placeholder="اكتب كلمة حلوة للصورة دي..." value="ذكرى من اختيارك يا صاحبي 🫂" aria-label="وصف الصورة 2">
+            <div class="user-slot-actions">
+              <label class="user-slot-upload-btn">
+                <span>📷 اختار صورة</span>
+                <input type="file" accept="image/*" class="user-slot-file-input" hidden>
+              </label>
+              <span class="user-slot-status"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="album-card user-editable-card" tabindex="0" role="button" aria-label="مساحتك الخاصة 3" data-slot="2" data-date="مساحتك الخاصة 💛" data-caption="أحلى لقطة تحب تضيفها 🎉">
+          <div class="card-image-wrap user-slot-wrap">
+            <img src="" alt="مساحتك الخاصة 3" class="card-image user-slot-img" style="display: none;">
+            <div class="user-slot-placeholder">
+              <span class="user-slot-icon">🎁</span>
+              <p class="user-slot-hint">تالت مساحة ليك!<br>ارفع أي صورة عايزها هنا 🥳</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-date">مساحتك الخاصة 💛</span>
+              <span class="card-num">33</span>
+            </div>
+            <input type="text" class="user-slot-caption-input" placeholder="اكتب كلمة حلوة للصورة دي..." value="أحلى لقطة تحب تضيفها 🎉" aria-label="وصف الصورة 3">
+            <div class="user-slot-actions">
+              <label class="user-slot-upload-btn">
+                <span>📷 اختار صورة</span>
+                <input type="file" accept="image/*" class="user-slot-file-input" hidden>
+              </label>
+              <span class="user-slot-status"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 4. Voice Note -->
+    <section class="voicenote-section">
+      <div class="voicenote-card">
+        <div class="voicenote-header">
+          <div class="voicenote-avatar">🎙️</div>
+          <div class="voicenote-info">
+            <h4 class="voicenote-title">رسالة صوتية لـ عايودي</h4>
+          </div>
+        </div>
+        
+        <div class="voicenote-player">
+          <button class="voicenote-play-btn" id="voicePlayBtn" aria-label="تشغيل التسجيل الصوتي">
+            <span class="voice-btn-icon" id="voiceBtnIcon">▶</span>
+          </button>
+          
+          <div class="voicenote-track-wrap">
+            <div class="voicenote-waveform">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="voicenote-times">
+              <span id="voiceCurrentTime">0:00</span>
+              <span id="voiceDuration">تسجيل من القلب 💬</span>
+            </div>
+          </div>
+        </div>
+        <audio id="voiceAudio" preload="auto" src="assets/music/voice.mp3"></audio>
+      </div>
+    </section>
+
+
+    <!-- 5. Scratch Card (تقدير) -->
+    <section class="scratch-section">
+      <div class="scratch-card-wrapper">
+        <div class="scratch-header">
+          <h3 class="scratch-title">اخربش هنا 🎁</h3>
+        </div>
+        
+        <div class="scratch-container" id="scratchContainer">
+          <div class="scratch-secret-content certificate-wrap">
+            <div class="cert-border-inner">
+              <div class="cert-crown">🎁</div>
+              <div class="cert-super-title">رسالة صغنونة ليك</div>
+              <h4 class="cert-recipient-name">إلى عايودي.. صاحبي وأغلى حد عندي ❤️🫂</h4>
+              <p class="cert-desc">
+                وجودك في حياتي لوحده نعمة كبيرة أوي، وربنا عالم قد إيه بفرح بوجودك وبضحكتك الحلوة. كل سنة وأنت سندي وأجدع صاحب في الدنيا، ويا رب تكون الهدية عجبتك وأكون عرفت أخلي يومك النهارده مميز، وربنا يديمنا في حياة بعض دايماً يا رب ✨🐥
+              </p>
+              <div class="cert-footer-row">
+                <div class="cert-seal">
+                  <div class="seal-inner">★ من Katkotaaa لعايودي ★</div>
+                </div>
+                <div class="cert-date">12/12 • دايماً سوا</div>
+              </div>
+            </div>
+          </div>
+          <canvas id="scratchCanvas" width="500" height="300"></canvas>
+        </div>
+        <button class="reveal-btn-fallback" id="revealSecretBtn">مش عارف تخربش؟ اضغط هنا لكشف 🎁</button>
+      </div>
+    </section>
+
+
+    <!-- 6. Friendship Stats -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-icon">👑</span>
+          <span class="stat-num">23</span>
+          <span class="stat-label">سنة عظمة</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">⏳</span>
+          <span class="stat-num">+8,400</span>
+          <span class="stat-label">يوم منور الدنيا</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">😂</span>
+          <span class="stat-num">∞</span>
+          <span class="stat-label">الضحكه اللي بحبها</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">💯</span>
+          <span class="stat-num">1000%</span>
+          <span class="stat-label">نسبة الجدعنة</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 6.5 Mini Games Section -->
+    <section class="games-section">
+      <!-- Game 1: Pop the Balloons -->
+      <div class="game-card" id="balloonGameCard">
+        <div class="game-header">
+          <h3 class="game-title">فرقع البلالين 🎈</h3>
+          <span class="game-score-pill" id="balloonCounter">0 / 6</span>
+        </div>
+        <div class="balloon-arena" id="balloonArena"></div>
+        <div class="balloon-message-box" id="balloonMessageBox">
+          دوس على أي بالونة عشان تفرقعها وتطلعلك مفاجأة! 🎉
+        </div>
+        <button class="game-replay-btn" id="balloonReplayBtn" style="display: none;">
+          بلالين تاني! 🎈
+        </button>
+      </div>
+
+      <!-- Game 2: Friendship Quiz -->
+      <div class="game-card" id="quizGameCard">
+        <div class="game-header">
+          <h3 class="game-title">اختبار الصحوبية 🧠❤️</h3>
+          <span class="game-score-pill" id="quizProgress">1 / 4</span>
+        </div>
+        <div class="quiz-body" id="quizBody">
+          <p class="quiz-question" id="quizQuestion"></p>
+          <div class="quiz-options" id="quizOptions"></div>
+        </div>
+        <div class="quiz-result" id="quizResult" style="display: none;">
+          <div class="quiz-result-emoji">🏆🎉</div>
+          <h4 class="quiz-result-title">النتيجة: 100% أجدع صاحب وأخ!</h4>
+          <p class="quiz-result-text">مفيش كلام يوصف قد إيه أنت غالي ومميز.. كل سنة وإحنا سوا يا عايودي ❤️🐥</p>
+          <button class="game-replay-btn" id="quizReplayBtn">العب تاني 🔄</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 6.5 Open When Envelopes (5 Feelings) -->
+    <section class="envelopes-section">
+      <div class="section-header">
+        <span class="section-icon">💌</span>
+        <h2 class="section-title">أظرف لكل وقت.. افتح الظرف حسب إحساسك</h2>
+      </div>
+      <p class="envelopes-subtitle">دوس على أي ظرف عشان يتفتح وتقرأ الرسالة اللي جواه ✨</p>
+
+      <div class="envelopes-grid">
+        <div class="envelope-card" tabindex="0" role="button" aria-expanded="false">
+          <div class="envelope-visual">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">❤️</div>
+            <div class="envelope-front">
+              <span class="envelope-mood-emoji">😔</span>
+              <span class="envelope-mood-label">افتح لما تكون متضايق</span>
+            </div>
+          </div>
+          <div class="envelope-letter">
+            <p>خد نفس عميق وافتكر إنك مش لوحدك أبداً.. أي ضيق هيعدي زي ما عدى قبله كتير، وأنا دايماً موجودة أسمعك في أي وقت ومن غير ما تتكلم حتى 🫂❤️</p>
+          </div>
+        </div>
+
+        <div class="envelope-card" tabindex="0" role="button" aria-expanded="false">
+          <div class="envelope-visual">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">💪</div>
+            <div class="envelope-front">
+              <span class="envelope-mood-emoji">🔋</span>
+              <span class="envelope-mood-label">افتح لما تتعب أو تفقد الشغف</span>
+            </div>
+          </div>
+          <div class="envelope-letter">
+            <p>افتكر قد إيه تعبت ووصلت لحد هنا يا أشطر مهندس 👨‍💻✨ أنا فخورة بيك جداً ومؤمنة بيك، خد بريك صغنن وكمّل وأنت قدها 100% 💯🤞</p>
+          </div>
+        </div>
+
+        <div class="envelope-card" tabindex="0" role="button" aria-expanded="false">
+          <div class="envelope-visual">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">😂</div>
+            <div class="envelope-front">
+              <span class="envelope-mood-emoji">🎈</span>
+              <span class="envelope-mood-label">افتح لما تكون فاضي وعايز تضحك</span>
+            </div>
+          </div>
+          <div class="envelope-letter">
+            <p>ادخل على الألبوم فوق وقلب في صورنا أو افتكر مواقفنا العشوائية 😂💃 ولو لسه عايز تضحك ابعتلي حالاً ونقلبها هزار 🎈</p>
+          </div>
+        </div>
+
+        <div class="envelope-card" tabindex="0" role="button" aria-expanded="false">
+          <div class="envelope-visual">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">🥳</div>
+            <div class="envelope-front">
+              <span class="envelope-mood-emoji">✨</span>
+              <span class="envelope-mood-label">افتح لما تفرح أو يحصلك حاجة حلوة</span>
+            </div>
+          </div>
+          <div class="envelope-letter">
+            <p>يا رب دايماً مبسوط وفرحان يا عايودي! ❤️‍🔥 افتكر إن فرحتك عندي بالضعف، ولازم تحكيلي التفاصيل كلها حالاً عشان نحتفل سوا 🎉✨</p>
+          </div>
+        </div>
+
+        <div class="envelope-card" tabindex="0" role="button" aria-expanded="false">
+          <div class="envelope-visual">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">🌙</div>
+            <div class="envelope-front">
+              <span class="envelope-mood-emoji">🥺</span>
+              <span class="envelope-mood-label">افتح لما تحس بالوحدة بالليل</span>
+            </div>
+          </div>
+          <div class="envelope-letter">
+            <p>مهما الوقت اتأخر أو الدنيا سكتت، فيه صاحبتك اللي بتتمنالك كل خير في الدنيا ومش هتسيبك أبداً.. ربنا يطمن قلبك ويديمك في حياتي 🐥💛</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Closing Banner -->
+    <footer class="closing-section">
+      <div class="closing-card">
+        <div class="closing-icon">🎈</div>
+        <h3 class="closing-title">كل سنة وإحنا سوا يا عايودي</h3>
+        <button class="celebrate-again-btn" id="celebrateAgainBtn">
+          احتفال كمان مرة! 🎊
+        </button>
+      </div>
+
+      <div class="editor-shortcut-wrap">
+      </div>
+
+      <p class="credit-footer">Made by Katkotaaa 🐥❤️</p>
+    </footer>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="إغلاق">&times;</button>
+      <div class="lightbox-image-wrap" id="lightboxMediaWrap">
+        <img src="" alt="" id="lightboxImg">
+        <video src="" controls id="lightboxVideo" style="display:none; max-width: 100%; max-height: 65vh;"></video>
+      </div>
+      <div class="lightbox-caption-wrap">
+        <span class="lightbox-date" id="lightboxDate"></span>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="memories-store.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Load memories and patch album cards from MemoriesStore (IndexedDB + localStorage)
+    (async function() {
+      try {
+        if (!window.MemoriesStore) return;
+        const memories = await MemoriesStore.getAll();
+        if (!memories || !memories.length) return;
+
+        const cards = document.querySelectorAll(".album-card");
+        cards.forEach((card, i) => {
+          const mem = memories[i];
+          if (!mem) return;
+
+          // Update data attributes (used by lightbox)
+          if (mem.src)     card.setAttribute("data-src", mem.src);
+          if (mem.date)    card.setAttribute("data-date", mem.date);
+          if (mem.caption) card.setAttribute("data-caption", mem.caption);
+
+          // Update visible image/video
+          const imgEl  = card.querySelector(".card-image");
+          const dateEl = card.querySelector(".card-date");
+          const capEl  = card.querySelector(".card-caption");
+
+          if (mem.src) {
+            if (mem.isVideo) {
+              const wrap = card.querySelector(".card-image-wrap");
+              if (wrap) {
+                wrap.classList.add("video-wrap");
+                wrap.innerHTML = `<video class="card-image card-video" src="${mem.src}" muted playsinline preload="metadata"></video><div class="video-play-overlay">▶</div>`;
+                card.classList.add("is-video", "video-card");
+              }
+            } else if (imgEl) {
+              imgEl.src = mem.src;
+              imgEl.onerror = null;
+            }
+          }
+          if (mem.date && dateEl) dateEl.textContent = mem.date;
+          if (mem.caption && capEl) capEl.textContent = mem.caption;
+        });
+      } catch(e) { console.warn("Could not load memories:", e); }
+    })();
+  </script>
+</body>
+</html>

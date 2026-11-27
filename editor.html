@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تعديل الصور والكلام 📸✏️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: linear-gradient(135deg, #0b0f19 0%, #161e31 100%);
+      color: #f8fafc;
+      font-family: 'Alexandria', sans-serif;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding: 18px 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(245,158,11,0.35);
+      border-radius: 18px;
+    }
+
+    .top-bar h1 {
+      font-size: clamp(1.15rem, 4vw, 1.6rem);
+      font-weight: 800;
+      color: #fbbf24;
+    }
+
+    .top-bar p { font-size: 0.88rem; color: #94a3b8; margin-top: 4px; }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-back {
+      background: rgba(245,158,11,0.15);
+      border-color: rgba(245,158,11,0.4);
+      color: #fbbf24;
+    }
+    .btn-back:hover { background: rgba(245,158,11,0.3); }
+
+    .btn-reset {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+    .btn-reset:hover { background: rgba(239, 68, 68, 0.3); }
+
+    .notice {
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.35);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 0.92rem;
+      color: #93c5fd;
+      line-height: 1.7;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+      margin-bottom: 40px;
+    }
+
+    .edit-card {
+      background: #161e31;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .edit-card:hover {
+      border-color: rgba(245,158,11,0.5);
+      transform: translateY(-2px);
+    }
+
+    .card-num-label {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-type-tag {
+      background: rgba(0,0,0,0.25);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+    }
+
+    .preview-box {
+      width: 100%;
+      height: 180px;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .preview-box img,
+    .preview-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .preview-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: #64748b;
+      font-size: 0.88rem;
+    }
+
+    .preview-placeholder span:first-child { font-size: 34px; }
+
+    .upload-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(245,158,11,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #fbbf24;
+      text-align: center;
+      padding: 11px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .upload-label:hover { background: rgba(245,158,11,0.25); }
+
+    input[type="file"] { display: none; }
+
+    .fields {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 5px;
+    }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 10px;
+      color: #f1f5f9;
+      font-family: 'Alexandria', sans-serif;
+      font-size: 0.88rem;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      resize: vertical;
+    }
+
+    .field-group input:focus,
+    .field-group textarea:focus {
+      border-color: rgba(245,158,11,0.6);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .sticky-bottom {
+      position: sticky;
+      bottom: 20px;
+      z-index: 90;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 24px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1.5px solid rgba(245,158,11,0.4);
+      border-radius: 999px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .save-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 34px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      font-family: 'Alexandria', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(245,158,11,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .save-btn:hover { transform: scale(1.04); box-shadow: 0 12px 32px rgba(245,158,11,0.7); }
+    .save-btn:active { transform: scale(0.98); }
+
+    .toast {
+      display: none;
+      position: fixed;
+      bottom: 110px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10b981;
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: 0 12px 36px rgba(16,185,129,0.5);
+      z-index: 1000;
+      animation: fadeInUp 0.35s ease;
+      text-align: center;
+    }
+
+    .toast.show { display: block; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11,15,25,0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      z-index: 2000;
+      font-size: 1.1rem;
+      color: #fbbf24;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px 10px;
+      }
+      .top-bar {
+        padding: 14px 14px;
+        border-radius: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      .top-actions {
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .notice {
+        padding: 12px 14px;
+        font-size: 0.85rem;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .sticky-bottom {
+        padding: 12px 16px;
+        border-radius: 18px;
+        width: 100%;
+        max-width: 100%;
+        bottom: 12px;
+      }
+      .save-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loadingOverlay" class="loading-overlay">
+    <div style="font-size: 40px; animation: spin 1s linear infinite;">⏳</div>
+    <div>جاري تحميل الألبوم...</div>
+  </div>
+
+  <div class="top-bar">
+    <div>
+      <h1>✏️ تعديل الـ 30 صورة والكلام</h1>
+      <p>بدّلي أي صورة أو فيديو، وعدّلي التواريخ والكلام زي ما تحبي</p>
+    </div>
+    <div class="top-actions">
+      <button class="btn-header btn-reset" id="resetBtn">🔄 استعادة الأصلي</button>
+      <a href="index.html" class="btn-header btn-back">← رجوع للموقع</a>
+    </div>
+  </div>
+
+  <div class="notice">
+    💡 <strong>طريقة التعديل:</strong>
+    دوسي على <strong>"📁 اختاري صورة أو فيديو"</strong> في أي كارت، واختاري من موبايلك أو جهازك (الصور بتنضغط تلقائياً وبتحافظ على جودتها وسرعتها العالية). لما تخلصي، دوسي <strong>"💾 حفظ كل التعديلات"</strong> تحت وهيتم حفظ كل حاجة فوراً!
+  </div>
+
+  <div class="cards-grid" id="cardsGrid">
+    <!-- Rendered by JS -->
+  </div>
+
+  <div class="sticky-bottom">
+    <button class="save-btn" id="saveBtn">
+      <span>💾</span>
+      <span id="saveBtnText">حفظ كل التعديلات</span>
+    </button>
+    <a href="index.html" class="btn-header btn-back">👁️ فتح الموقع</a>
+  </div>
+
+  <div class="toast" id="toast">✅ تم الحفظ بنجاح! جاري توجيهك للموقع...</div>
+
+  <!-- Shared Storage Engine -->
+  <script src="memories-store.js"></script>
+  <script>
+    let currentMemories = [];
+
+    async function initEditor() {
+      const loadingOverlay = document.getElementById("loadingOverlay");
+      try {
+        currentMemories = await MemoriesStore.getAll();
+      } catch(e) {
+        console.error("Failed to load:", e);
+        currentMemories = MemoriesStore.DEFAULT_MEMORIES;
+      }
+      renderCards();
+      if (loadingOverlay) loadingOverlay.style.display = "none";
+    }
+
+    function renderCards() {
+      const grid = document.getElementById("cardsGrid");
+      grid.innerHTML = "";
+
+      currentMemories.forEach((mem, index) => {
+        const num = String(index + 1).padStart(2, "0");
+        const card = document.createElement("div");
+        card.className = "edit-card";
+        card.id = `card_${index}`;
+
+        const isVid = Boolean(mem.isVideo);
+        const hasSrc = Boolean(mem.src);
+
+        card.innerHTML = `
+          <div class="card-num-label">
+            <span>البطاقة رقم ${num}</span>
+            <span class="card-type-tag" id="typeTag_${index}">${isVid ? "🎬 فيديو" : "📸 صورة"}</span>
+          </div>
+
+          <div class="preview-box" id="preview_${index}">
+            ${hasSrc
+              ? (isVid
+                  ? `<video src="${mem.src}" muted controls style="width:100%;height:100%;object-fit:cover;"></video>`
+                  : `<img src="${mem.src}" alt="صورة ${num}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='assets/images/photo${index+1}.jpg';">`)
+              : `<div class="preview-placeholder"><span>📷</span><span>صورة رقم ${num}</span></div>`
+            }
+          </div>
+
+          <label class="upload-label" for="file_${index}">
+            📁 اختاري صورة أو فيديو
+          </label>
+          <input type="file" id="file_${index}" accept="image/*,video/*">
+
+          <div class="fields">
+            <div class="field-group">
+              <label>التاريخ أو العنوان (فوق)</label>
+              <input type="text" id="date_${index}" value="${escapeAttr(mem.date)}" placeholder="مثلاً: أول الحكاية / صيف 2023">
+            </div>
+            <div class="field-group">
+              <label>الكلام والموقف (تحت)</label>
+              <textarea id="cap_${index}" rows="2" placeholder="اكتبي الذكرى أو الموقف هنا...">${escapeText(mem.caption)}</textarea>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+
+        // File upload with auto-compression
+        const fileInput = card.querySelector(`#file_${index}`);
+        fileInput.addEventListener("change", async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          const previewEl = document.getElementById(`preview_${index}`);
+          const typeTagEl = document.getElementById(`typeTag_${index}`);
+
+          if (file.type.startsWith("video/")) {
+            previewEl.innerHTML = `<div class="preview-placeholder"><span>⏳</span><span>جاري تجهيز الفيديو...</span></div>`;
+            try {
+              const videoData = await MemoriesStore.readVideo(file);
+              currentMemories[index].src = videoData;
+              currentMemories[index].isVideo = true;
+              previewEl.innerHTML = `<video src="${videoData}" muted controls style="width:100%;height:100%;object-fit:cover;"></video>`;
+              if (typeTagEl) typeTagEl.textContent = "🎬 فيديو";
+            } catch(err) {
+              alert("تعذر قراءة ملف الفيديو");
+            }
+          } else {
+            previewEl.innerHTML = `<div class="preview-placeholder"><span>⏳</span><span>جاري ضغط وتجهيز الصورة...</span></div>`;
+            try {
+              // High-quality Canvas compression
+              const compressedSrc = await MemoriesStore.compressImage(file, 1200, 0.85);
+              currentMemories[index].src = compressedSrc;
+              currentMemories[index].isVideo = false;
+              previewEl.innerHTML = `<img src="${compressedSrc}" style="width:100%;height:100%;object-fit:cover;">`;
+              if (typeTagEl) typeTagEl.textContent = "📸 صورة";
+            } catch(err) {
+              alert("تعذر تجهيز الصورة");
+            }
+          }
+        });
+      });
+    }
+
+    // Save All Handler
+    const saveBtn = document.getElementById("saveBtn");
+    const saveBtnText = document.getElementById("saveBtnText");
+    const toast = document.getElementById("toast");
+
+    saveBtn.addEventListener("click", async () => {
+      saveBtn.disabled = true;
+      saveBtnText.textContent = "جاري الحفظ...";
+
+      // Collect all current input values
+      for (let i = 0; i < currentMemories.length; i++) {
+        const dateInput = document.getElementById(`date_${i}`);
+        const capInput = document.getElementById(`cap_${i}`);
+        if (dateInput) currentMemories[i].date = dateInput.value;
+        if (capInput) currentMemories[i].caption = capInput.value;
+      }
+
+      await MemoriesStore.saveAll(currentMemories);
+
+      toast.classList.add("show");
+      saveBtnText.textContent = "✅ تم الحفظ!";
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1000);
+    });
+
+    // Reset Handler
+    document.getElementById("resetBtn").addEventListener("click", async () => {
+      if (confirm("هل أنتي متأكدة من استعادة الصور والكلام الأصلي للألبوم؟")) {
+        currentMemories = await MemoriesStore.resetAll();
+        renderCards();
+        alert("تمت استعادة البيانات الأصلية بنجاح!");
+      }
+    });
+
+    function escapeAttr(str) {
+      return (str || "").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+    }
+    function escapeText(str) {
+      return (str || "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    document.addEventListener("DOMContentLoaded", initEditor);
+  </script>
+</body>
+</html>
