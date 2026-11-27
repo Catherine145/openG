@@ -38,7 +38,7 @@
     { "src": "assets/images/memories/Snapchat-1907026020.mp4", "date": "يوم تحفة", "caption": "ما أنت بتعرف تختار أماكن اهو وساعتها اتبسطت وبحب الفيديو ده قوي", "isVideo": true },
     { "src": "assets/images/memories/Snapchat-2023851695.jpg", "date": "أول خروجة لينا سوا", "caption": "بحب الصورة دي قوي كيوت وشايلة ميموريز كتيرة قوي", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-2035264167.mp4", "date": "أيام الامتحانات", "caption": "نظرتك ليا حنينة موت", "isVideo": true },
-    { "src": "assets/images/memories/Snapchat-262237617.jpg", "date": "ذكرى غريبة", "caption": "تزعلني وتصالحني مش عارفة أعمل إيه", "isVideo": false },
+    { "src": "assets/images/memories/Snapchat-262237617.jpg", "date": "ذكرى غريبة", "caption": "تزعلني وتصالحني مش عارفة أعمل إيه بحبك", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-74414018.jpg", "date": "خروجة الكوربا", "caption": "فاكر أنت اليوم ده طبعاً أول قلم", "isVideo": false },
     { "src": "assets/images/memories/Snapchat-912697055.jpg", "date": "يوم ما نزلتني مخصوص", "caption": "بحب الصورة دي والتيك توكات اللي ورا الصورة دي", "isVideo": false }
   ];
