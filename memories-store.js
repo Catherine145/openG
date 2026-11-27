@@ -15,7 +15,7 @@
     { "src": "assets/images/memories/IMG-20241223-WA0029.jpg", "date": "23 ديسمبر 2024", "caption": "عيوضي القمر، شياكة وأناقة توب التوب 💯", "isVideo": false },
     { "src": "assets/images/memories/IMG-20250501-WA0034.jpg", "date": "1 مايو 2025", "caption": "خروجة الكوربا بجد كانت تحفة", "isVideo": false },
     { "src": "assets/images/memories/IMG-20250506-WA0175.jpg", "date": "6 مايو 2025", "caption": "مشينا بعد الجامعة، اللي بجد بيبقى شايل ميموريز كتيرة قوي، حاجات حلوة وحاجات صعبة وضحك وحاجات كتيرة جداً", "isVideo": false },
-    { "src": "assets/images/memories/IMG-20250513-WA0010.jpg", "date": "أنا وأنت ودرتي بالضاد", "caption": "أمير صاحبك أجدع واحد بجد وربنا يخليكم لبعض وتفضلوا طول العمر سوا، أحسن صاحب ممكن تشوفه", "isVideo": false },
+    { "src": "assets/images/memories/IMG-20250513-WA0010.jpg", "date": "أنا وأنت وضرتي", "caption": "أمير صاحبك أجدع واحد بجد وربنا يخليكم لبعض وتفضلوا طول العمر سوا، أحسن صاحب ممكن تشوفه", "isVideo": false },
     { "src": "assets/images/memories/IMG-20250922-WA0279.jpg", "date": "22 سبتمبر 2025", "caption": "خروجات إطول اللي ملناش غيرها", "isVideo": false },
     { "src": "assets/images/memories/IMG-20251020-WA0095.jpg", "date": "20 أكتوبر 2025", "caption": "الصور العشوائية بتاعتنا", "isVideo": false },
     { "src": "assets/images/memories/IMG-20251114-WA0083.jpg", "date": "14 نوفمبر 2025", "caption": "الحضن وأحن واحد في الدنيا", "isVideo": false },
