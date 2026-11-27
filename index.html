@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <script>
-    (function(){
-      if(sessionStorage.getItem('unlocked')==='1') return;
-      var entered = prompt('enter the password');
-      if(entered !== '9111212'){
-        document.write('<h2 style="font-family:sans-serif;text-align:center;margin-top:40vh">Wrong password</h2>');
-        document.close();
-        throw new Error('wrong');
-      }
-      sessionStorage.setItem('unlocked','1');
-    })();
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday يا عايودي! 🎉</title>
@@ -26,6 +14,53 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Password Gate -->
+  <div id="passwordGate" style="
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:#01426e;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    z-index:999999;font-family:sans-serif;
+  ">
+    <div style="text-align:center;padding:2rem;">
+      <div style="font-size:3rem;margin-bottom:1rem;">🔒</div>
+      <input id="pwInput" type="password" placeholder="enter the password"
+        style="
+          display:block;width:260px;padding:14px 18px;
+          border:2px solid rgba(255,255,255,0.4);border-radius:12px;
+          background:rgba(255,255,255,0.1);color:#fff;
+          font-size:1.1rem;text-align:center;outline:none;
+          margin:0 auto 1rem;letter-spacing:3px;
+        "
+        onkeydown="if(event.key==='Enter')checkPw()"
+      >
+      <button onclick="checkPw()" style="
+        padding:12px 36px;border:none;border-radius:12px;
+        background:#fbbf24;color:#1e3a5f;font-size:1rem;
+        font-weight:700;cursor:pointer;
+      ">دخول</button>
+      <div id="pwErr" style="color:#fca5a5;margin-top:1rem;font-size:0.9rem;min-height:1.2em;"></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      if(sessionStorage.getItem('unlocked')==='1'){
+        document.getElementById('passwordGate').style.display='none';
+      }
+    })();
+    function checkPw(){
+      var v = document.getElementById('pwInput').value;
+      if(v === '9111212'){
+        sessionStorage.setItem('unlocked','1');
+        document.getElementById('passwordGate').style.display='none';
+      } else {
+        document.getElementById('pwErr').textContent = 'wrong password, try again';
+        document.getElementById('pwInput').value='';
+        document.getElementById('pwInput').focus();
+      }
+    }
+  </script>
 
   <!-- Welcome / Music Autoplay Overlay -->
   <div class="welcome-overlay" id="welcomeOverlay">
