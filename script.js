@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       passwordToggleBtn.addEventListener("click", () => {
         const isPass = sitePasswordInput.type === "password";
         sitePasswordInput.type = isPass ? "text" : "password";
-        passwordToggleBtn.textContent = isPass ? "🙈" : "👁️";
+        passwordToggleBtn.textContent = isPass ? "Hide" : "Show";
       });
     }
 
@@ -37,10 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
         passwordGateOverlay.classList.add("hidden");
         setTimeout(() => {
           passwordGateOverlay.style.display = "none";
-        }, 650);
+        }, 450);
       } else {
         if (passwordGateError) {
-          passwordGateError.textContent = "كلمة السر غلط يا صاحبي 😅 جرب تاني!";
+          passwordGateError.textContent = "Incorrect password. Please try again.";
         }
         if (passwordGateBox) {
           passwordGateBox.classList.remove("shake");

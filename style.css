@@ -2761,57 +2761,108 @@ body {
 }
 
 /* ============================================================
-   Password Gate Overlay
+   Password Gate Overlay (Formal / Neutral)
    ============================================================ */
 .password-gate-overlay {
+  position: fixed;
+  inset: 0;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 10000;
+  padding: 20px;
+}
+
+.password-gate-overlay.hidden {
+  animation: overlayFadeOut 0.45s ease forwards;
+  pointer-events: none;
+}
+
+.password-gate-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  padding: 36px 30px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.password-gate-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 20px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 .password-input-wrap {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .password-gate-input {
   width: 100%;
-  padding: 14px 46px 14px 16px;
-  border-radius: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.92);
-  color: #1e293b;
-  font-size: 1.05rem;
-  font-weight: 700;
-  font-family: var(--font-ar);
-  text-align: center;
+  padding: 12px 58px 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  text-align: left;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .password-gate-input:focus {
-  border-color: #fbbf24;
-  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.35);
+  border-color: #334155;
+  box-shadow: 0 0 0 3px rgba(51, 65, 85, 0.12);
 }
 
 .password-toggle-btn {
   position: absolute;
-  left: 12px;
+  right: 10px;
   background: transparent;
   border: none;
-  font-size: 1.15rem;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  padding: 4px;
-  line-height: 1;
+  padding: 4px 6px;
 }
 
 .password-gate-error {
-  min-height: 22px;
-  margin-bottom: 14px;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #fecdd3;
-  font-family: var(--font-ar);
+  min-height: 20px;
+  margin-bottom: 12px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #dc2626;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.password-unlock-btn {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.password-unlock-btn:hover {
+  background: #1e293b;
 }
 
 .password-gate-box.shake {
